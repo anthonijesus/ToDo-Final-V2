@@ -24,7 +24,6 @@ const Login = ({ onLogin }) => {
       );
 
       sessionStorage.setItem("user", JSON.stringify(data)); // Guarda el usuario en sessionStorage
-      localStorage.setItem("token", data.token); // Guarda el token en localStorage
 
       onLogin(); // Llama la función para actualizar el estado de autenticación
 

@@ -6,7 +6,8 @@ const axiosInstance = axios.create({
 
 // Interceptor de solicitud para agregar token
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const token = user?.token;
   if (token) {
     config.headers["Authorization"] = `Bearer ${token}`;
   }
@@ -18,7 +19,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem("token");
+      sessionStorage.removeItem("user");
       if (window.location.pathname !== "/") { // Evita redirigir si ya estoy en "/"
         window.location.href = "/";
       }

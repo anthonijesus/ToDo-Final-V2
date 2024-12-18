@@ -15,7 +15,11 @@ const Main = () => {
       <ToDoList />
       <Modal isOpen={isModalOpen} onClose={closeModal}></Modal>
       <Profile />
-      <div className={styles.alert}>{error && <p>{error}</p>}</div>
+      {error && (
+        <div className={styles.alert}>
+          <p>{error}</p>
+        </div>
+      )}
     </main>
   );
 };

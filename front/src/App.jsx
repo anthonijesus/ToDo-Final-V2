@@ -9,7 +9,8 @@ function App() {
 
   // Verifica si el usuario ya tiene un token al cargar la aplicación
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const token = user?.token;
     if (token) {
       setIsAuthenticated(true);
     }
@@ -20,7 +21,6 @@ function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Elimina el token en el localStorage
     sessionStorage.removeItem("user"); // Elimina los datos del usuario en el navegador
     setIsAuthenticated(false);
   };

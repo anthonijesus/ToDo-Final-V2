@@ -38,14 +38,18 @@ export const TaskProvider = ({ children }) => {
   //almacena los datos del usuario en el session storage
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  //
+  //Edición de tareas
   const [isEditing, setIsEditing] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState({});
+
+  //Borrado de tareas
   const [taskToDelete, setTaskToDelete] = useState({});
   const [isDeleting, setIsDeleting] = useState(false);
+
   //Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
+
   //Cierra el modal y cierra el formulario de edición si esta abierto antes de que se ejecute una accion de agregar nueva tarea
   const closeModal = () => {
     setIsEditing(false);
