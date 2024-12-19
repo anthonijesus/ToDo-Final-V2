@@ -12,9 +12,11 @@ La apliación está desarrollada usando la libreria de React, por lo tanto para 
     _ Luego dirigete a la carpeta clonada (cd C:\TodoList\ToDo-Final-V2)
     \_ Instala las dependencias que precisa el proyecto para funcionar. Dirigite primero a: C:\ToDoList\ToDo-Final-V2\front y ejecuta el comando ---> "npm install", luego dirigete a: C:\ToDoList\ToDo-Final-V2\server y ejecuta el comando ---> "npm install"
     \_ Ahora precisas crear un archivo .env (en la raiz de la carpeta C:\ToDoList\ToDo-Final-V2\server) con los siguientes valores:
-    MONGODB_URI=mongodb+srv://anthonijesus:Nore257-@cluster0.9inkp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-    PORT=3001
-    JWT_SECRET=790f002f0e03f27ca12b78a5a992cee1ee0b917e2140f04ad5cee4a281bc2601
+    # MONGODB_URI=mongodb+srv://anthonijesus:Nore257-@cluster0.9inkp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    # PORT=3001
+    # JWT_SECRET=790f002f0e03f27ca12b78a5a992cee1ee0b917e2140f04ad5cee4a281bc2601
+    \_ Tambien precisas crear otro archivo .env (pero en la raiz de la carpeta C:\ToDoList\ToDo-Final-V2\front) con el siguiente valor:
+    # VITE_API_URL=http://localhost:3001
     \_ Finalmente ejecuta el comando "npm run dev" en cada uno de los directorios del proyecto, es decir, en el front (C:\ToDoList\ToDo-Final-V2\front) y en el server(C:\ToDoList\ToDo-Final-V2\server)
     \_ Abre el navegador de tu preferencia y escribe en la barra de direcciones "http://localhost:5173/" para realizar las pruebas en la app.
 
