@@ -50,15 +50,15 @@ const Aside = () => {
           >
             <li>
               <a onClick={openModal}>
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faBook} />
                 Crear Tarea
               </a>
               <a onClick={showTaskPending}>
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faBook} />
                 Ver Pendientes
               </a>
               <a onClick={showTaskCompleted}>
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faBook} />
                 Ver Completadas
               </a>
             </li>
@@ -66,7 +66,7 @@ const Aside = () => {
         </li>
         <li className={styles.dropdown}>
           <a onClick={editProfile}>
-            <FontAwesomeIcon icon={faBook} />
+            <FontAwesomeIcon icon={faUser} />
             Perfil
           </a>
         </li>
