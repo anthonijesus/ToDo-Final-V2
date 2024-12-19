@@ -8,11 +8,15 @@ La apliación está desarrollada usando la libreria de React, por lo tanto para 
   - Crear una carpeta en el directorio de su preferencia (por ejemplo C:\TodoList)
   - Acceder con el Git Bash al directorio creado (ejecuta --> cd C:\TodoList)
   - En dicho directorio ejecuta los siguientes comandos:
-    _ Clona el siguiente repositorio de Github: "git clone https://github.com/anthonijesus/ToDoList-React-v2.git"
-    _ Luego dirigete a la carpeta clonada (cd C:\TodoList\ToDoList-React)
-    \_ Instala las dependencias que precisa el proyecto para funcionar, ejecuta el comando ---> "npm install"
-    \_ Finalmente ejecuta el comando "npm run dev" y en una nueva ventana de Git Bash y dirigiendote a la misma ruta ("cd C:" luego "cd ToDoList" y luego "cd ToDoList-React") ejecuta "npm run dev-server"
-    \_ Abre el navegador de tu preferencia y escribe en la barra de direcciones "http://localhost:5173/"
+    _ Clona el siguiente repositorio de Github: "git clone https://github.com/anthonijesus/ToDo-Final-V2.git"
+    _ Luego dirigete a la carpeta clonada (cd C:\TodoList\ToDo-Final-V2)
+    \_ Instala las dependencias que precisa el proyecto para funcionar. Dirigite primero a: C:\ToDoList\ToDo-Final-V2\front y ejecuta el comando ---> "npm install", luego dirigete a: C:\ToDoList\ToDo-Final-V2\server y ejecuta el comando ---> "npm install"
+    \_ Ahora precisas crear un archivo .env (en la raiz de la carpeta C:\ToDoList\ToDo-Final-V2\server) con los siguientes valores:
+    MONGODB_URI=mongodb+srv://anthonijesus:Nore257-@cluster0.9inkp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    PORT=3001
+    JWT_SECRET=790f002f0e03f27ca12b78a5a992cee1ee0b917e2140f04ad5cee4a281bc2601
+    \_ Finalmente ejecuta el comando "npm run dev" en cada uno de los directorios del proyecto, es decir, en el front (C:\ToDoList\ToDo-Final-V2\front) y en el server(C:\ToDoList\ToDo-Final-V2\server)
+    \_ Abre el navegador de tu preferencia y escribe en la barra de direcciones "http://localhost:5173/" para realizar las pruebas en la app.
 
 # FUNCIONALIDAD DEL TODO LIST
 

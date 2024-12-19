@@ -5,6 +5,7 @@ import logo from "../Aside/logo.jpg";
 import styles from "./Login.module.scss";
 
 const Login = ({ onLogin }) => {
+  const Url = import.meta.env.VITE_API_URL;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,13 +16,10 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     setError(""); // Resetea errores antes de enviar
     try {
-      const { data } = await axiosInstance.post(
-        "http://localhost:3001/api/auth/login",
-        {
-          username,
-          password,
-        }
-      );
+      const { data } = await axiosInstance.post(`${Url}/api/auth/login`, {
+        username,
+        password,
+      });
 
       sessionStorage.setItem("user", JSON.stringify(data)); // Guarda el usuario en sessionStorage
 

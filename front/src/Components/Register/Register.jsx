@@ -5,6 +5,7 @@ import logo from "../Aside/logo.jpg";
 import styles from "../../Components/Login/Login.module.scss";
 
 const Register = () => {
+  const Url = import.meta.env.VITE_API_URL;
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,17 +18,16 @@ const Register = () => {
     e.preventDefault();
     setError(""); // Resetea errores antes de enviar
     try {
-      const { data } = await axiosInstance.post(
-        "http://localhost:3001/api/auth/user",
-        {
-          username,
-          name,
-          email,
-          password,
-        }
-      );
+      const { data } = await axiosInstance.post(`${Url}/api/auth/user`, {
+        username,
+        name,
+        email,
+        password,
+      });
 
-      alert("Registro exitoso. Inicia sesión para continuar.");
+      alert(
+        `Registro del usuario "${data.name}" exitoso. Inicia sesión para continuar.`
+      );
 
       navigate("/login");
     } catch (error) {

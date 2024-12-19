@@ -1,11 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  useEffect,
-  useState,
-} from "react";
-//import axios from "axios";
+import { createContext, useContext, useReducer, useState } from "react";
+
+import React from "react";
 
 import axiosInstance from "../api/axiosConfig";
 
@@ -33,6 +28,7 @@ const taskReducer = (state, action) => {
 };
 
 export const TaskProvider = ({ children }) => {
+  const Url = import.meta.env.VITE_API_URL;
   //Almacena las tareas en el estado
   const [tasks, dispatch] = useReducer(taskReducer, []);
   //almacena los datos del usuario en el session storage
@@ -69,10 +65,7 @@ export const TaskProvider = ({ children }) => {
   async function addNewTask(task) {
     //Hace la petición POST para guardar la nueva tarea
     try {
-      const response = await axiosInstance.post(
-        "http://localhost:3001/api/task",
-        task
-      );
+      const response = await axiosInstance.post(`${Url}/api/task`, task);
       //console.log(response.data);
       dispatch({ type: "ADD_TASK", payload: response.data });
     } catch (error) {
@@ -91,7 +84,7 @@ export const TaskProvider = ({ children }) => {
 
   async function removeTask(taskId) {
     try {
-      await axiosInstance.delete(`http://localhost:3001/api/task/${taskId}`);
+      await axiosInstance.delete(`${Url}/api/task/${taskId}`);
       dispatch({ type: "REMOVE_TASK", payload: taskId });
     } catch (error) {
       console.log("Error: ", error);
@@ -103,7 +96,7 @@ export const TaskProvider = ({ children }) => {
   async function taskUpdated(task) {
     try {
       const response = await axiosInstance.put(
-        `http://localhost:3001/api/task/${task._id}`,
+        `${Url}/api/task/${task._id}`,
         task
       );
       dispatch({ type: "UPDATE_TASK", payload: response.data });
@@ -120,13 +113,11 @@ export const TaskProvider = ({ children }) => {
 
   async function completeTask(task) {
     //
-    const { data } = await axiosInstance.get(
-      `http://localhost:3001/api/task/${task._id}`
-    ); // Trae la tarea con el id por parametro del server
+    const { data } = await axiosInstance.get(`${Url}/api/task/${task._id}`); // Trae la tarea con el id por parametro del server
 
     data.isCompleted = !data.isCompleted; // Cambia el estado de la tarea
 
-    await axiosInstance.put(`http://localhost:3001/api/task/${task._id}`, {
+    await axiosInstance.put(`${Url}/api/task/${task._id}`, {
       isCompleted: data.isCompleted,
     });
 
@@ -145,7 +136,7 @@ export const TaskProvider = ({ children }) => {
     setError("");
     try {
       const response = await axiosInstance.get(
-        `http://localhost:3001/api/task?isCompleted=false&creator=${user?.user_id}` // Agrega el id del usuario al filtro
+        `${Url}/api/task?isCompleted=false&creator=${user?.user_id}` // Agrega el id del usuario al filtro
       );
       dispatch({ type: "SET_TASK_PENDING", payload: response.data });
     } catch (error) {
@@ -163,7 +154,7 @@ export const TaskProvider = ({ children }) => {
     setError("");
     try {
       const response = await axiosInstance.get(
-        `http://localhost:3001/api/task?isCompleted=true&creator=${user?.user_id}`
+        `${Url}/api/task?isCompleted=true&creator=${user?.user_id}`
       );
 
       dispatch({ type: "SET_TASK_COMPLETED", payload: response.data });
@@ -236,6 +227,7 @@ export const TaskProvider = ({ children }) => {
         showProfile,
         error,
         setError,
+        Url,
       }}
     >
       {children}
